@@ -1,5 +1,4 @@
 {
-  "modelId": "07f7b681-0e96-4951-9477-6e0f8fbc5d71",
   "graph": {
     "cells": [
       {
@@ -18,7 +17,7 @@
         "z": 1,
         "attrs": {
           "name": {
-            "text": "sensor_statechart Local"
+            "text": "sensor_statechart Local Export"
           },
           "specification": {
             "text": "@EventDriven\n@SuperSteps(no)\n\ninterface: \n    in event EV_BTN_01_UP\n    in event EV_BTN_01_DOWN\n    out event EV_SYS_01_DOWN\n    \ninternal: \n    var tick: integer\n    const DEL_BTN_01_MAX: integer = 50"
@@ -123,8 +122,8 @@
           "y": 77.99999618530273
         },
         "size": {
-          "height": 60,
-          "width": 72.015625
+          "width": 72.015625,
+          "height": 60
         },
         "angle": 0,
         "fixedRatio": false,
@@ -134,9 +133,10 @@
         "z": 307,
         "parent": "abf30ef1-f634-408b-b1d5-c067b2ee7011",
         "marker": [
-          "Node is not reachable."
+          "This state's completion transition results in an infinite cycle."
         ],
         "embeds": [
+          "c2f2bc22-066f-4b41-9110-d65cc76407ca",
           "9e42a872-46af-45e5-936b-031b18848fe9"
         ],
         "attrs": {
@@ -152,8 +152,8 @@
           "y": 79
         },
         "size": {
-          "height": 60,
-          "width": 93.625
+          "width": 93.625,
+          "height": 60
         },
         "angle": 0,
         "fixedRatio": false,
@@ -162,10 +162,11 @@
         "id": "1f3252f4-ee67-4340-8c22-97f9320e8685",
         "z": 308,
         "marker": [
-          "Node is not reachable."
+          "This state's completion transition results in an infinite cycle."
         ],
         "parent": "abf30ef1-f634-408b-b1d5-c067b2ee7011",
         "embeds": [
+          "55005a57-494b-44e0-ac59-b53fc5f3ccc0",
           "0ceb2cca-231d-4f61-a930-992f2c1bb047"
         ],
         "attrs": {
@@ -276,7 +277,7 @@
         "z": 320,
         "parent": "1f3252f4-ee67-4340-8c22-97f9320e8685",
         "marker": [
-          "Could not find declaration of EV_UP\nTrigger 'EV_UP' is no event."
+          "Dead transition. This transition is never taken due to the precedence of completion transition."
         ],
         "vertices": [
           {
@@ -340,7 +341,7 @@
         "z": 320,
         "parent": "fc9be10d-41c8-4532-8159-8f382c7e7aa4",
         "marker": [
-          "Could not find declaration of EV_DOWN\nTrigger 'EV_DOWN' is no event."
+          "Dead transition. This transition is never taken due to the precedence of completion transition."
         ],
         "vertices": [
           {
@@ -380,7 +381,7 @@
           {
             "attrs": {
               "text": {
-                "text": "EV_BTN_01_DOWN\n[tick > 0]"
+                "text": "EV_BTN_01_DOWN\n[tick == 0]"
               }
             },
             "position": {
@@ -404,7 +405,7 @@
         "z": 320,
         "parent": "abf30ef1-f634-408b-b1d5-c067b2ee7011",
         "marker": [
-          "Could not find declaration of EV_DOWN\nTrigger 'EV_DOWN' is no event."
+          "Dead transition. This transition is never taken due to the precedence of completion transition."
         ],
         "vertices": [],
         "attrs": {}
@@ -608,12 +609,12 @@
           {
             "attrs": {
               "text": {
-                "text": "EV_BTN_01_UP\n[tick > 0]"
+                "text": "EV_BTN_01_UP\n[tick == 0]"
               }
             },
             "position": {
-              "distance": 0.42352956977538553,
-              "offset": 31,
+              "distance": 0.3709560040367615,
+              "offset": 23,
               "angle": 0
             }
           },
@@ -632,7 +633,7 @@
         "z": 320,
         "parent": "abf30ef1-f634-408b-b1d5-c067b2ee7011",
         "marker": [
-          "Could not find declaration of EV_UP\nTrigger 'EV_UP' is no event."
+          "Dead transition. This transition is never taken due to the precedence of completion transition."
         ],
         "attrs": {}
       },
@@ -692,7 +693,7 @@
           }
         ],
         "marker": [
-          "Could not find declaration of EV_UP\nTrigger 'EV_UP' is no event."
+          "Dead transition. This transition is never taken due to the precedence of completion transition."
         ],
         "attrs": {}
       },
@@ -751,6 +752,128 @@
         "parent": "abf30ef1-f634-408b-b1d5-c067b2ee7011",
         "marker": [
           "Could not find declaration of DEL_BTN_01_MAX"
+        ],
+        "attrs": {}
+      },
+      {
+        "type": "Transition",
+        "source": {
+          "id": "fc9be10d-41c8-4532-8159-8f382c7e7aa4"
+        },
+        "target": {
+          "id": "fc9be10d-41c8-4532-8159-8f382c7e7aa4",
+          "anchor": {
+            "name": "topLeft",
+            "args": {
+              "dx": 64.0078125,
+              "dy": 16,
+              "rotate": true
+            }
+          },
+          "priority": true
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {
+              "text": {
+                "text": "EV_BTN_01_UP\n[tick > 0]\n/ tick -- "
+              }
+            },
+            "position": {
+              "distance": 0.6121045405730817,
+              "offset": -47.5883209005527,
+              "angle": 0
+            }
+          },
+          {
+            "attrs": {
+              "root": {
+                "opacity": 1
+              },
+              "label": {
+                "text": "4"
+              }
+            }
+          }
+        ],
+        "id": "c2f2bc22-066f-4b41-9110-d65cc76407ca",
+        "z": 321,
+        "parent": "fc9be10d-41c8-4532-8159-8f382c7e7aa4",
+        "vertices": [
+          {
+            "x": 1617,
+            "y": 58
+          }
+        ],
+        "marker": [
+          "mismatched input '<EOF>' expecting ']'"
+        ],
+        "attrs": {}
+      },
+      {
+        "type": "Transition",
+        "source": {
+          "id": "1f3252f4-ee67-4340-8c22-97f9320e8685"
+        },
+        "target": {
+          "id": "1f3252f4-ee67-4340-8c22-97f9320e8685",
+          "anchor": {
+            "name": "topLeft",
+            "args": {
+              "dx": 63.012451171875,
+              "dy": 14,
+              "rotate": true
+            }
+          },
+          "priority": true
+        },
+        "router": {
+          "name": "orthogonal",
+          "args": {
+            "padding": 8
+          }
+        },
+        "connector": {
+          "name": "rounded"
+        },
+        "labels": [
+          {
+            "attrs": {
+              "text": {
+                "text": "EV_BTN_01_DOWN\n[tick > 0]\n/tick -- "
+              }
+            },
+            "position": {
+              "distance": 0.785059387888213,
+              "offset": -61.506807203320975,
+              "angle": 0
+            }
+          },
+          {
+            "attrs": {
+              "root": {
+                "opacity": 1
+              },
+              "label": {
+                "text": "4"
+              }
+            }
+          }
+        ],
+        "id": "55005a57-494b-44e0-ac59-b53fc5f3ccc0",
+        "z": 322,
+        "parent": "1f3252f4-ee67-4340-8c22-97f9320e8685",
+        "marker": [
+          "The evaluation result of a guard expression must be of type boolean."
         ],
         "attrs": {}
       }
